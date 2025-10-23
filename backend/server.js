@@ -26,8 +26,16 @@ app.use(limiter);
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
+  origin: [
+    process.env.FRONTEND_URL || 'http://localhost:3000',
+    'http://40.67.147.211:3000',  // Frontend IP with port
+    'http://40.67.147.211',        // Frontend IP without port
+    'https://40.67.147.211:3000',  // HTTPS version with port
+    'https://40.67.147.211'        // HTTPS version without port
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Body parsing middleware

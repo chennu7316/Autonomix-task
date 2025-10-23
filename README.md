@@ -1,265 +1,250 @@
 # InsightBoard AI - Smart Meeting Dashboard
 
-A comprehensive productivity SaaS application that transforms meeting transcripts into actionable insights using AI-powered action item generation and progress tracking.
+Transform meeting transcripts into actionable insights using AI-powered analysis and intelligent action item generation.
+
+## 🎯 Overview
+
+InsightBoard AI is a comprehensive productivity SaaS application that automatically analyzes meeting transcripts and generates actionable insights using Google Gemini AI. It provides a smart dashboard for tracking progress, managing action items, and visualizing productivity metrics.
+
+## 🏗️ Tech Stack
+
+### Frontend
+- **Next.js 14** - React framework with TypeScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **Lucide React** - Beautiful icons
+- **Recharts** - Data visualization
+- **React Hot Toast** - Notifications
+
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web framework
+- **Sequelize** - PostgreSQL ORM
+- **JWT** - Authentication
+- **Winston** - Logging
+- **Helmet** - Security headers
+- **CORS** - Cross-origin resource sharing
+
+### Database
+- **PostgreSQL** - Primary database (running in container on VM)
+
+### AI Integration
+- **Google Gemini AI** - For intelligent action item extraction and analysis
+
+### Infrastructure
+- **Docker** - Containerization
+- **VM Deployment** - Hosted on virtual machine
 
 ## 🚀 Features
 
-- **AI-Powered Analysis**: Automatically generate action items from meeting transcripts using OpenAI
+- **AI-Powered Analysis**: Automatically generate action items from meeting transcripts using Google Gemini AI
 - **Smart Dashboard**: Real-time statistics and progress visualization
 - **Action Item Management**: Track, assign, and monitor action items with status updates
 - **Progress Tracking**: Visual charts and analytics for productivity insights
-- **Modern UI**: Clean, responsive interface built with Next.js and Tailwind CSS
+- **Modern UI**: Clean, responsive interface with Tailwind CSS
 
-## 🏗️ Architecture
+## ✅ Completed Features
 
-- **Frontend**: Next.js 14 with TypeScript, Tailwind CSS, and Framer Motion
-- **Backend**: Node.js with Express.js, MVC architecture (Services, Controllers, Routes)
-- **Database**: PostgreSQL with Sequelize ORM
-- **AI Integration**: OpenAI GPT-3.5-turbo for intelligent action item extraction
-- **API**: RESTful API with comprehensive endpoints and proper validation
+### Level 1 — Core Features (Required) ✅
+- All core functionality implemented
 
-## 📦 Installation
+### Level 2 — Enhanced Features ✅  
+- All enhanced features implemented
 
-### Prerequisites
+### Level 3 — Advanced Features (Bonus) ✅
+1. **Cloud Deployment** - Azure VM with Docker containers
+2. **Authentication** - JWT-based secure authentication
 
-- Node.js 18+ 
-- npm or yarn
-- PostgreSQL 12+
-- OpenAI API key
+## 📋 Prerequisites
 
-### Quick Start
+- Node.js (v18 or higher)
+- PostgreSQL database
+- Git
+- Google Gemini AI API key
 
-1. **Clone and install dependencies:**
-   ```bash
-   git clone <repository-url>
-   cd insightboard-ai
-   npm run install:all
-   ```
+## 🛠️ Local Development Setup
 
-2. **Set up PostgreSQL database:**
-   ```bash
-   # Create database
-   createdb insightboard_dev
-   ```
+### Step 1: Clone the Repository
+```bash
+git clone <repository-url>
+cd task-1-explain
+```
 
-3. **Set up environment variables:**
-   ```bash
-   # Copy environment template
-   cp backend/env.example backend/.env
-   
-   # Edit backend/.env and configure your settings
-   DB_PASSWORD=your_postgres_password
-   OPENAI_API_KEY=your_openai_api_key_here
-   ```
+### Step 2: Backend Setup
+```bash
+# Navigate to backend directory
+cd backend
 
-4. **Initialize database:**
-   ```bash
-   cd backend
-   npm run migrate
-   npm run seed  # Optional: add sample data
-   ```
+# Install dependencies
+npm install
 
-5. **Start the development servers:**
-   ```bash
-   npm run dev
-   ```
+# Create environment file
+# Copy the .env file content (will be shared separately)
+# Paste the environment variables
 
-   This will start both frontend (http://localhost:3000) and backend (http://localhost:5000) servers.
+# Start the backend server
+npm run dev
+```
 
-## 🔧 Configuration
+### Step 3: Frontend Setup
+```bash
+# Navigate to frontend directory
+cd frontend
 
-### Environment Variables
+# Install dependencies
+npm install
 
-Create a `.env` file in the `backend` directory:
+# Create environment file
+# Copy the .env.local file content (will be shared separately)
+# Paste the environment variables
 
+# Start the frontend development server
+npm run dev
+```
+
+## 🔧 Environment Variables
+
+### Backend (.env)
 ```env
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=insightboard
+DB_USER=your_username
+DB_PASSWORD=your_password
+
+# JWT Configuration
+JWT_SECRET=your_jwt_secret
+
+# Google Gemini AI
+GEMINI_API_KEY=your_gemini_api_key
+
 # Server Configuration
 PORT=5000
 NODE_ENV=development
+
+# Frontend URL (for CORS)
 FRONTEND_URL=http://localhost:3000
-
-# Database Configuration (PostgreSQL)
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=insightboard_dev
-DB_USER=postgres
-DB_PASSWORD=your_password
-
-# AI Configuration
-OPENAI_API_KEY=your_openai_api_key_here
-
-# Logging
-LOG_LEVEL=info
 ```
 
-### API Endpoints
-
-#### Transcripts
-- `GET /api/transcripts` - Get all transcripts
-- `POST /api/transcripts` - Create new transcript
-- `GET /api/transcripts/:id` - Get specific transcript
-- `PUT /api/transcripts/:id` - Update transcript
-- `DELETE /api/transcripts/:id` - Delete transcript
-
-#### Action Items
-- `GET /api/action-items` - Get all action items
-- `POST /api/action-items` - Create new action item
-- `GET /api/action-items/:id` - Get specific action item
-- `PUT /api/action-items/:id` - Update action item
-- `PATCH /api/action-items/:id/status` - Update action item status
-- `DELETE /api/action-items/:id` - Delete action item
-
-#### Dashboard
-- `GET /api/dashboard/stats` - Get dashboard statistics
-- `GET /api/dashboard/recent-activity` - Get recent activity
-- `GET /api/dashboard/action-items-by-status` - Get action items by status
-- `GET /api/dashboard/overdue-items` - Get overdue action items
-
-## 🎯 Usage
-
-### 1. Upload Meeting Transcripts
-- Navigate to the "Transcripts" tab
-- Fill in meeting details (title, date, participants)
-- Paste your meeting transcript
-- Click "Upload & Generate Action Items"
-- AI will automatically analyze and create actionable items
-
-### 2. Manage Action Items
-- View all action items in the "Action Items" tab
-- Filter by status (pending, in_progress, completed)
-- Update status and assignees
-- Create new action items manually
-
-### 3. Track Progress
-- Monitor completion rates on the dashboard
-- View overdue items and take action
-- Analyze productivity trends with charts
-
-## 🛠️ Development
-
-### Project Structure
+### Frontend (.env.local)
+```env
+# API Configuration
+NEXT_PUBLIC_API_URL=/api
+BACKEND_URL=http://localhost:5000
 ```
-insightboard-ai/
+
+
+## 🌐 Azure VM Deployment
+
+### Infrastructure Setup
+- **Azure Virtual Machine** with Docker installed
+- **Frontend Container** - Next.js application
+- **Backend Container** - Node.js API server
+- **Database Container** - PostgreSQL database
+- **Public IP Access** - All services accessible via public IP
+
+### Deployment Process
+1. **Create Azure VM** with Docker support
+2. **Install Docker** on the VM
+3. **Deploy containers** for frontend, backend, and database
+4. **Configure networking** for public IP access
+5. **Set up environment variables** for production
+
+### Container Architecture
+```
+Azure VM
+├── Frontend Container (Port 3000)
+├── Backend Container (Port 5000)
+├── Database Container (Port 5432)
+└── Public IP Access
+```
+
+### Access Points
+- **Frontend**: `http://your-vm-public-ip:3000`
+- **Backend API**: `http://your-vm-public-ip:5000/api`
+- **Database**: `your-vm-public-ip:5432`
+
+## 📁 Project Structure
+
+```
+task-1-explain/
 ├── backend/
-│   ├── routes/           # API route handlers
-│   ├── services/         # Business logic (AI integration)
-│   ├── database/         # Database initialization
-│   └── server.js         # Express server
+│   ├── controllers/     # API route handlers
+│   ├── middleware/      # Authentication & validation
+│   ├── models/         # Database models
+│   ├── routes/         # API routes
+│   ├── services/       # Business logic
+│   ├── config/         # Database configuration
+│   ├── server.js       # Main server file
+│   └── package.json    # Backend dependencies
 ├── frontend/
-│   ├── app/              # Next.js app directory
-│   ├── components/       # React components
-│   └── public/           # Static assets
-└── package.json          # Root package.json
+│   ├── app/           # Next.js app directory
+│   ├── components/    # React components
+│   ├── contexts/      # React contexts
+│   ├── utils/         # Utility functions
+│   ├── next.config.js # Next.js configuration
+│   └── package.json   # Frontend dependencies
+├── .gitignore         # Git ignore rules
+└── README.md          # This file
 ```
 
-### Available Scripts
+## 🔌 API Endpoints
 
-```bash
-# Install all dependencies
-npm run install:all
+### Authentication
+- `POST /api/auth/login` - User login
+- `POST /api/auth/logout` - User logout
 
-# Start both frontend and backend
-npm run dev
+### Transcripts
+- `GET /api/transcripts` - Get all transcripts
+- `POST /api/transcripts` - Upload new transcript
+- `GET /api/transcripts/:id` - Get specific transcript
 
-# Start only backend
-npm run dev:backend
+### Action Items
+- `GET /api/action-items` - Get all action items
+- `PUT /api/action-items/:id` - Update action item
+- `GET /api/action-items/stats/overview` - Get statistics
 
-# Start only frontend  
-npm run dev:frontend
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-## 🚀 Deployment
-
-### Environment Setup
-1. Set production environment variables
-2. Configure database path
-3. Set up OpenAI API key
-4. Configure CORS for production domain
-
-### Build and Deploy
-```bash
-# Build the application
-npm run build
-
-# Start production server
-npm start
-```
+### Dashboard
+- `GET /api/dashboard/overdue-items` - Get overdue items
+- `GET /api/dashboard/recent-activity` - Get recent activity
+- `GET /api/dashboard/action-items-by-status` - Get status statistics
 
 ## 🤖 AI Integration
 
-The application uses OpenAI's GPT-3.5-turbo model to:
+The application uses **Google Gemini AI** to:
 - Analyze meeting transcripts
-- Extract actionable items
-- Assign priorities and assignees
-- Generate due dates when mentioned
-
-### AI Features
-- **Smart Extraction**: Identifies action items from natural language
-- **Priority Assignment**: Automatically assigns high/medium/low priority
-- **Assignee Detection**: Extracts mentioned names as assignees
-- **Due Date Recognition**: Identifies and formats mentioned dates
-
-## 📊 Database Schema
-
-### Transcripts Table
-- `id` (Primary Key)
-- `title` (Meeting title)
-- `content` (Transcript text)
-- `meeting_date` (Date of meeting)
-- `participants` (Attendee names)
-- `created_at`, `updated_at` (Timestamps)
-
-### Action Items Table
-- `id` (Primary Key)
-- `transcript_id` (Foreign Key)
-- `title` (Action item title)
-- `description` (Detailed description)
-- `assignee` (Responsible person)
-- `due_date` (Deadline)
-- `status` (pending/in_progress/completed/cancelled)
-- `priority` (high/medium/low)
-- `created_at`, `updated_at` (Timestamps)
+- Extract key action items
+- Generate intelligent insights
+- Provide contextual recommendations
 
 ## 🔒 Security Features
 
-- **Rate Limiting**: Prevents API abuse
-- **CORS Protection**: Configurable cross-origin requests
-- **Input Validation**: Sanitizes user inputs
-- **Error Handling**: Secure error responses
-- **Helmet.js**: Security headers
+- JWT-based authentication
+- CORS protection
+- Rate limiting
+- Input validation
+- SQL injection prevention
+- XSS protection
 
-## 📈 Performance
+## 📊 Database Schema
 
-- **SQLite Database**: Fast, lightweight data storage
-- **Optimized Queries**: Efficient database operations
-- **Caching**: React state management for performance
-- **Lazy Loading**: Component-based code splitting
+### Users
+- id, username, email, password, role, created_at, updated_at
 
-## 🤝 Contributing
+### Transcripts
+- id, user_id, title, content, status, created_at, updated_at
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+### Action Items
+- id, transcript_id, title, description, priority, status, assigned_to, due_date, created_at, updated_at
 
-## 📄 License
+## 🚀 Quick Start
 
-MIT License - see LICENSE file for details
+1. **Clone the repository**
+2. **Set up PostgreSQL database**
+3. **Configure environment variables**
+4. **Install dependencies** (`npm install` in both directories)
+5. **Start backend** (`npm run dev` in backend directory)
+6. **Start frontend** (`npm run dev` in frontend directory)
+7. **Access the application** at `http://localhost:3000`
 
-## 🆘 Support
-
-For support and questions:
-- Create an issue in the repository
-- Check the documentation
-- Review the API endpoints
-
----
-
-**Built with ❤️ for productivity and AI-powered insights**
+## 📝 License
