@@ -12,7 +12,6 @@ import {
 import StatsCard from './StatsCard'
 import RecentActivity from './RecentActivity'
 import ActionItemsChart from './ActionItemsChart'
-import OverdueItems from './OverdueItems'
 import TaskStatusChart from './TaskStatusChart'
 import PriorityChart from './PriorityChart'
 import { apiJson } from '../utils/api'
@@ -113,8 +112,6 @@ export default function Dashboard() {
         <RecentActivity />
       </div>
 
-      {/* Overdue Items */}
-      <OverdueItems />
     </div>
   )
 }
